@@ -1,0 +1,39 @@
+<c:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	xmlns="sap.ui.table">
+	
+
+			<Table
+				id="tablePOText"
+				selectionMode="None"
+				visibleRowCount="0"
+			
+		
+				ariaLabelledBy="title">
+				
+		<columns>
+			
+			
+			<Column width="5em">
+					<m:Label text="{i18n>TABLE_DAddr_COLUMN_ITEMNO}" tooltip = "Item No"/>
+					<template>
+						<m:Input value = "{PoItem}" enabled = "false"/>
+					</template>
+			</Column>
+			
+			<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+					<m:Label text="{i18n>TABLE_ITEMTEXT_COLUMN_NAME}" tooltip = "Name"/>
+					<template>
+							<m:TextArea id="textArea" value="{itemTextTab}" class="tableTextAreaElement"
+			placeholder="Enter text here ..." growing="true" growingMaxLines="5" rows="5" width="60%" change="onTextAreaChange"/>
+					</template>
+			</Column>
+			
+			
+			
+		</columns>
+	</Table>
+	
+</c:FragmentDefinition>

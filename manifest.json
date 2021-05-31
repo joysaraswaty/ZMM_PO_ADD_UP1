@@ -1,0 +1,198 @@
+{
+    "_version": "1.5.0",
+    "sap.app": {
+        "id": "PurchaseOrdersPurchaseOrders",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0"
+        },
+        "dataSources": {
+            "ZODATA_22256_GET_PO_LIST_SRV": {
+                "uri": "/sap/opu/odata/SAP/zodata_22256_get_po_list_srv",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "ZODATA_22256_PO_F4_FUNCTIONS_SRV": {
+                "uri": "/sap/opu/odata/sap/ZODATA_22256_PO_F4_FUNCTIONS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZODATA_22256_PO_F4_FUNCTIONS_SRV/metadata.xml"
+                }
+            },
+            "ZODATA_22256_PO_CR_CH_SERVICE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZODATA_22256_PO_CR_CH_SERVICE_SRV",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZODATA_22256_PO_CR_CH_SERVICE_SRV/metadata.xml"
+                }
+            },
+            "ZODATA_22256_PO_POSTING_SRV": {
+                "uri": "/sap/opu/odata/SAP/ZODATA_22256_PO_POSTING_SRV",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZODATA_22256_PO_POSTING_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "PurchaseOrdersPurchaseOrders.view.viewApplicationMain",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.collaboration": {},
+                "sap.ui.comp": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "PurchaseOrdersPurchaseOrders.i18n.i18n"
+                }
+            },
+            "model__get_po_list": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZODATA_22256_GET_PO_LIST_SRV",
+                "preload": true
+            },
+            "model__transfer_po": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZODATA_22256_PO_CR_CH_SERVICE_SRV",
+                "preload": true
+            },
+            "model__f4_functions": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZODATA_22256_PO_F4_FUNCTIONS_SRV",
+                "preload": true
+            },
+            "model__post_po": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZODATA_22256_PO_POSTING_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewPath": "PurchaseOrdersPurchaseOrders.view",
+                "controlId": "app",
+                "controlAggregation": "pages"
+            },
+            "routes": [
+                {
+                    "name": "targetManagePOs",
+                    "pattern": "",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "targetManagePOs"
+                    ]
+                },
+                {
+                    "name": "targetHandlePO",
+                    "pattern": "SinglePO/{Command}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "targetHandlePO"
+                    ]
+                }
+            ],
+            "targets": {
+                "targetManagePOs": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "viewManagePOs",
+                    "controlAggregation": "pages",
+                    "viewLevel": 1
+                },
+                "targetHandlePO": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "viewHandlePO",
+                    "viewLevel": 2,
+                    "controlAggregation": "pages"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zmm_po_cust",
+        "_version": "1.1.0"
+    }
+}

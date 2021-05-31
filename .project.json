@@ -1,0 +1,36 @@
+{
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/SAP/zodata_22256_get_po_list_srv",
+    "metadataFilePath": "localService/metadata.xml",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "deploy": {
+    "destination": "CFN",
+    "name": "ZMM_PO_CUST"
+  },
+  "projectType": [
+    "sap.watt.uitools.ide.fiori",
+    "com.watt.common.builder.sapui5clientbuild"
+  ],
+  "build": {
+    "buildRequired": true,
+    "sourceFolder": "",
+    "targetFolder": "dist",
+    "lastBuildDateTime": "Wed, 26 May 2021 10:45:12 GMT",
+    "availableFoldersComboBox": [],
+    "availableFilesComboBox": [],
+    "excludedFolders": [],
+    "excludedFiles": [
+      "index.html"
+    ]
+  },
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "",
+    "defaultLanguage": "",
+    "defaultI18NPropertyFile": "",
+    "resourceModelName": ""
+  }
+}

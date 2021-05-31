@@ -1,0 +1,163 @@
+<c:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns:c="sap.ui.core" xmlns:m="sap.m" xmlns="sap.ui.table">
+	
+
+			<Table id="tablePOItems" selectionMode="None" visibleRowCount="0" rowHeight="10" ariaLabelledBy="title">
+
+
+		<columns>
+			<Column width="1%">
+					<m:Label text=""/>
+					<template>
+						<m:Button icon="{= ${DeleteInd} === 'L' ? 'sap-icon://activate' : 'sap-icon://delete' }" press="button_pressed_Items_Delete" class="sapUiSizeCompact"/>
+						
+					</template>
+			</Column>
+			<Column width="3%" visible="true">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_ITEM_NUM}" tooltip="PO Item Number"/>
+					<template>
+						<m:Input value="{PoItem}" editable="false"/>
+					</template>
+			</Column>
+			<!--account assignment and item category column are hidden only the logic for these fields still needed as per issue 48 -->
+			<Column width="0px" visible="true">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_ACC_ASIGN}" tooltip="Account Assignment"/>
+					<template>
+						<m:Input value="{Acctasscat}" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_AccountAssignment" enabled="{=  (!(${DeleteInd} === 'L')) &amp;&amp; (! ( (${Input1} === 'NB3') || (${Input1} === 'NB2') || (${Input1} === 'NB2D') || (${Input1} === 'NB2Z') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z') || (${Input1} === 'NB2F') ) )}"/>
+						<!--here Input1 is used for DocType-->
+					</template>
+			</Column>
+			<Column width="0px" visible="true">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_ITEM_CAT}" tooltip="Item Category"/>
+					<template>
+						<m:Input value="{ItemCat}" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_ItemCategory" enabled="false"/>
+					</template>
+			</Column>
+			<Column width="10%">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_SHORT_TEXT}" tooltip="Short Text"/>
+					<template>
+						<m:Input value="{ShortText}" maxLength="40" liveChange="fn_val_hlp_req__Items_ShortText" enabled="{= !(${DeleteInd} === 'L')}"
+						valueState="{=((${ShortText}.trim().length === 0 &amp;&amp; ${valueStateFlag})  &amp;&amp; !(${DeleteInd} === 'L'))? 'Error' : 'None'}"/>
+					</template>
+			</Column>
+			<Column width="7.5%">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_MAT_GRP}" tooltip="Material Group"/>
+					<template>
+						<m:Input value="{MatlGroup}" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_MaterialGroup" enabled="{= !(${DeleteInd} === 'L')}" change="fn_focusout_MaterialGroup"
+						valueState="{= ((${MatlGroup}.length === 0 &amp;&amp; ${valueStateFlag})  &amp;&amp; !(${DeleteInd} === 'L'))? 'Error' : 'None'}"/>
+					</template>
+			</Column>
+			
+			<Column width="0px" visible="true">
+					<m:Label text="Plant" tooltip="Plant" visible="true"/>
+					<template>
+						<m:Input value="{Plant}" visible="true" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_Plant" enabled="{= !(${DeleteInd} === 'L')}"/>
+					</template>
+			</Column>
+			
+			<Column width="9%">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_DELV_DATE}" tooltip="Delivery Date"/>
+					<template>
+						<m:DatePicker valueFormat="MM.dd.yyyy" value="{          path: 'DeliveryDate',          formatter : '.formatDate'         }" change="deliveryDateChange" enabled="{= !(${DeleteInd} === 'L')}"/>
+					</template>
+			</Column>
+			<Column width="6%">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_QUANTITY}" tooltip="Quantity"/>
+					<template>
+						<m:Input value="{ path: 'Quantity' , formatter : '.format_2DigitsDecimalNumber'}" liveChange="fn_Items_Quantity_Change" enabled="{= !(((${Acctasscat} === 'L') &amp;&amp; (${ItemCat} === 'B')) || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === '9'))  ||  ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === '9'))  || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === 'D'))  || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === 'D')) || (${DeleteInd} === 'L') || (${Distribkey} !== '0') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z'))  }"
+						valueState="{= ((${Quantity}.length === 0 &amp;&amp; ${valueStateFlag}) &amp;&amp; !(((${Acctasscat} === 'L') &amp;&amp; (${ItemCat} === 'B')) || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === '9'))  ||  ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === '9'))  || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === 'D'))  || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === 'D')) || (${DeleteInd} === 'L') || (${Distribkey} !== '0') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z')) )? 'Error' : 'None'}"/>
+					</template>
+			</Column>
+			<Column width="5%">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_UM}" tooltip="Unit of Measure"/>
+					<template>
+						<m:Input value="{PoUnit}" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_UnitOfMeasure" enabled="{= !(((${Acctasscat} === 'L') &amp;&amp; (${ItemCat} === 'B')) || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === '9'))  || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === '9'))  || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === 'D'))  || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === 'D')) || (${DeleteInd} === 'L') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z') ) }" 
+						valueState="{= ((${PoUnit}.length === 0 &amp;&amp; ${valueStateFlag}) &amp;&amp; !(((${Acctasscat} === 'L') &amp;&amp; (${ItemCat} === 'B')) || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === '9'))  || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === '9'))  || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === 'D'))  || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === 'D')) || (${DeleteInd} === 'L') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z') ))? 'Error' : 'None'}"/>
+					</template>
+			</Column>
+			<Column width="6%">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_NET_PRICE}" tooltip="Net Price"/>
+					<template>
+						<m:Input value="{ path: 'NetPrice' , formatter : '.format_2DigitsDecimalNumber'}" liveChange="fn_Items_NetPrice_Change" enabled="{= !(((${Acctasscat} === 'L') &amp;&amp; (${ItemCat} === 'B')) || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === '9')) || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === '9')) || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === 'D')) || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === 'D')) ||(${DeleteInd} === 'L') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z') ) }"
+						 	valueState="{= ((${NetPrice}.length === 0 &amp;&amp; ${valueStateFlag}) &amp;&amp; !(((${Acctasscat} === 'L') &amp;&amp; (${ItemCat} === 'B')) || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === '9')) || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === '9')) || ((${Acctasscat} === 'K') &amp;&amp; (${ItemCat} === 'D')) || ((${Acctasscat} === 'F') &amp;&amp; (${ItemCat} === 'D')) ||(${DeleteInd} === 'L') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z') ))? 'Error' : 'None'}"/>
+					</template>
+			</Column>
+			
+			<Column width="0px" visible="true">
+					<m:Label text="Curr" visible="true" tooltip="Currency"/>
+					<template>
+						<m:Text text="{Currency}" visible="false"/>
+					</template>
+			</Column>
+			<Column width="3em">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_NET_PRICE}" tooltip="Price Unit"/>
+					<template>
+						<m:Input value="{ path: 'PriceUnit' , formatter : '.format_2DigitsDecimalNumber' }" liveChange="fn_Items_Per_Change" enabled="{= !(${DeleteInd} === 'L')}"
+							 valueState="{= ((${PriceUnit}.length === 0 &amp;&amp; ${valueStateFlag}) &amp;&amp; !(${DeleteInd} === 'L'))? 'Error' : 'None'}"/>
+					</template>
+			</Column>
+			<Column width="6.5em">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_ORDER}" tooltip="Order"/>
+					<template>
+						<m:Input value="{= (${Acctasscat} === 'F')|| (${Input1} === 'NB2Z') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z') || (${Input1} === 'NB2F') ? ${Orderid} : '' }" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_Order" enabled="{= ( ( (${Acctasscat} === 'F') || (${Input1} === 'NB2Z') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z') || (${Input1} === 'NB2F')  ) &amp;&amp; (${Distribkey} === '0')) &amp;&amp; !(${DeleteInd} === 'L')}" change="fn_focusout__ItemsOrder"
+						valueState="{= (${Orderid}.length === 0 &amp;&amp; ${valueStateFlag}) &amp;&amp; ((((${Acctasscat} === 'F') || (${Input1} === 'NB2Z') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z') || (${Input1} === 'NB2F')) &amp;&amp; (${Distribkey} === '0')) &amp;&amp; !(${DeleteInd} === 'L'))? 'Error' : 'None'}"/>
+						<!--<m:Input value="{= (${Acctasscat} === 'F')|| (${InpuDocType} === 'NB2Z') || (${InpuDocType} === 'N2ZD') || (${InpuDocType} === 'NB3Z') || (${InpuDocType} === 'NB2F') ? ${Orderid} : '' }" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_Order" enabled="{= ( ( (${Acctasscat} === 'F') || (${InpuDocType} === 'NB2Z') || (${InpuDocType} === 'N2ZD') || (${InpuDocType} === 'NB3Z') || (${InpuDocType} === 'NB2F')  ) &amp;&amp; (${Distribkey} === '0')) &amp;&amp; !(${DeleteInd} === 'L')}" change="fn_focusout__ItemsOrder"/>-->
+					</template>
+			</Column>
+			<Column width="5em">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_ITEM_VALUE}" tooltip="Item Value"/>
+					<template>
+						<m:Text text="{ path: 'ItemValue', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"/>
+					</template>
+			</Column>
+			
+			<Column width="8.5%">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_GL_ACC}" tooltip="G/L Account"/>
+					<template>
+						<m:Input value="{GlAccount}" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_Account" enabled="{= (${Distribkey} === '0') &amp;&amp; !(${DeleteInd} === 'L')}" change="fn_focusout_GLAccount"
+						 valueState="{= (${GlAccount}.length === 0 &amp;&amp; ${valueStateFlag}) &amp;&amp; ((${Distribkey} === '0') &amp;&amp; !(${DeleteInd} === 'L'))? 'Error' : 'None'}"/>
+					</template>
+			</Column>
+			<!--<Column width="5.5em">-->
+			<Column width="10%">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_COST_CENTER}" tooltip="Cost Center"/>
+					<template>
+						<m:Input value="{= (${Acctasscat} === 'K') || (${Acctasscat} === 'L') || (${Input1} === 'NB2Z') || (${Input1} === 'N2ZD') || (${Input1} === 'NB2F') || (${Input1} === 'NB3Z')  ? ${Costcenter} : '' }" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_CostCenter" enabled="{= ((${Acctasscat} === 'K') || (${Acctasscat} === 'L') || (${Input1} === 'NB2Z') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z')  ) &amp;&amp; (${Distribkey} === '0') &amp;&amp; !(${DeleteInd} === 'L')}" change="fn_focusout__CostCenter"
+						valueState="{= (${Costcenter}.length === 0 &amp;&amp; ${valueStateFlag}) &amp;&amp; (((${Acctasscat} === 'K') || (${Acctasscat} === 'L') || (${Input1} === 'NB2Z') || (${Input1} === 'N2ZD') || (${Input1} === 'NB3Z')  ) &amp;&amp; (${Distribkey} === '0') &amp;&amp; !(${DeleteInd} === 'L'))? 'Error' : 'None'}"/>
+						<!--<m:Input value="{= (${Acctasscat} === 'K') || (${Acctasscat} === 'L') || (${InpuDocType} === 'NB2Z') || (${InpuDocType} === 'N2ZD') || (${InpuDocType} === 'NB3Z')  ? ${Costcenter} : '' }" showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Items_CostCenter" enabled="{= ((${Acctasscat} === 'K') || (${Acctasscat} === 'L') || (${InpuDocType} === 'NB2Z') || (${InpuDocType} === 'N2ZD') || (${InpuDocType} === 'NB3Z')  ) &amp;&amp; (${Distribkey} === '0') &amp;&amp; !(${DeleteInd} === 'L')}" change="fn_focusout__CostCenter"/>-->
+					</template>
+			</Column>
+
+			<Column width="6em">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_DISTRIBUTION}" tooltip="Distribution"/>
+					<template>
+						<!--<m:ComboBox id="comboSelectDistribution" selectedKey="{Distribkey}" selectionChange="fn_val_hlp_req__Items_Distribution" enabled="{= !((${DeleteInd} === 'L') || (${ItemCat} === 'D') || (${ItemCat} === 'B')) }">-->
+						<m:ComboBox id="comboSelectDistribution" selectedKey="{Distribkey}" selectionChange="fn_val_hlp_req__Items_Distribution" enabled="false">
+							<m:items>
+								<c:Item key="0" text="Single"/>
+								<c:Item key="1" text="Quantity"/>
+								<c:Item key="2" text="Percentage"/>
+							</m:items>
+						</m:ComboBox>
+					</template>
+			</Column>
+
+			<Column width="2.5em">
+					<m:Label text=""/>
+					<template>
+						<m:Button icon="sap-icon://menu" press="openDistributionManagementDialog" class="sapUiSizeCompact" enabled="{= !(${DeleteInd} === 'L')}"/>
+					</template>
+			</Column>
+			<Column width="6%">
+					<m:Label text="{i18n>TABLE_GEN_COLUMN_LIMIT}" tooltip="Limit"/>
+					<template>
+						<m:Input value="{ path: 'Limit', formatter : '.format_2DigitsDecimalNumber' }" liveChange="fn_Items_Limit_Change" enabled="{= (((${ItemCat} === 'B') || (${ItemCat} === 'D') || (${ItemCat} === '9'))  &amp;&amp; !(${DeleteInd} === 'L'))}"
+							valueState="{= ((${Limit}.length === 0 &amp;&amp; ${valueStateFlag}) &amp;&amp; (((${ItemCat} === 'B') || (${ItemCat} === 'D') || (${ItemCat} === '9'))  &amp;&amp; !(${DeleteInd} === 'L')))? 'Error' : 'None'}"/>
+					</template>
+			</Column>
+		</columns>
+		
+	</Table>
+	
+	<m:Button icon="sap-icon://sys-add" press="buttonNewItemPressed"/>
+	
+</c:FragmentDefinition>

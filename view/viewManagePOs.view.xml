@@ -1,0 +1,89 @@
+<mvc:View controllerName="PurchaseOrdersPurchaseOrders.controller.viewManagePOs" xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core" xmlns:m="sap.m" xmlns:l="sap.ui.layout">
+	<m:Page title="{i18n>title}" showHeader="true" enableScrolling="true" class="sapUiContentPadding" showNavButton="false">
+		<m:content>
+			<m:VBox>
+				
+				<m:Toolbar/>
+				<Table id="tableManagePOs" rows="{/results}" selectionMode="Single" enableCellFilter="true" class="sapUiSizeCompact"
+					visibleRowCountMode="Fixed" rowHeight="45">
+					<columns>
+						<Column filterProperty="PoNumber" width="6em">
+							<m:Label text="{i18n>TABLE_PO_COLUMN_PONUMBER_TEXT}" tooltip="Po Number"/>
+							<template>
+								<m:Text text="{PoNumber}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column filterProperty="Vendorname" width="16%">
+							<m:Label text="{i18n>TABLE_PO_COLUMN_SUPPLIER_TEXT}" tooltip="Supplier"/>
+							<template>
+								<m:Text text="{Vendorname} ({Vendor})" wrapping="false"/>
+							</template>
+						</Column>
+						<Column filterProperty="PurGrouptxt" visible="false">
+							<m:Label text="Purchasing Group" tooltip="Purchasing Group"/>
+							<template>
+								<m:Text text="{PurGrouptxt} ({PurGroup})" wrapping="false"/>
+							</template>
+						</Column>
+						<Column filterProperty="HeaderText" width="18%">
+							<m:Label text="{i18n>TABLE_PO_COLUMN_HEADER_TEXT}" tooltip="Header Text"/>
+							<template>
+								<m:Text text="{HeaderText}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column filterProperty="CompCodetxt">
+							<m:Label text="{i18n>TABLE_PO_COLUMN_COMP_CODE_TEXT}" tooltip="Company Code"/>
+							<template>
+								<m:Text text="{CompCodetxt} ({CompCode})" wrapping="false"/>
+							</template>
+						</Column>
+						<Column filterProperty="StatusText">
+							<m:Label text="{i18n>TABLE_PO_COLUMN_APPROVE_STAT_TEXT}" tooltip="Approval Status"/>
+							<template>
+								<m:Text text="{StatusText}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="userCol" filterProperty="CreatedBy">
+							<m:Label text="{i18n>TABLE_PO_COLUMN_CREATE_ID_TEXT}" tooltip="Created By"/>
+							<template>
+								<m:Text text="{CreatedBy}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column id="agentCol" filterProperty="Agent">
+							<m:Label text="{i18n>TABLE_PO_COLUMN_CREATE_ID_TEXT}" tooltip="Agent"/>
+							<template>
+								<m:Text text="{Agent}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column hAlign="End" filterProperty="NetValue">
+							<m:Label text="{i18n>TABLE_PO_COLUMN_APROVE_VALUE_TEXT}" tooltip="Approved Value"/>
+							<template>
+								<m:Text
+									text="{path:'NetValue', type:'sap.ui.model.type.Float', formatOptions :{maxFractionDigits:2, minFractionDigits:2, maxIntegerDigits:10, minIntegerDigits:1}}"
+									wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="3em">
+							<m:Button icon="sap-icon://clear-filter" press="clearAllFilters"/>
+							<template>
+								<m:Button icon="sap-icon://navigation-right-arrow" press="runNavigationToEditPO" class="sapUiSizeCompact"/>
+							</template>
+						</Column>
+					</columns>
+				</Table>
+			</m:VBox>
+		</m:content>
+		<m:footer>
+			<m:OverflowToolbar id="otbFooter">
+				<m:ToolbarSpacer/>
+				<m:Button text="" icon="sap-icon://media-rewind"/>
+				<m:Label text="First | Last"/>
+				<m:Button text="" icon="sap-icon://media-forward"/>
+				<m:ToolbarSpacer/>
+				<m:Button text="{i18n>BUTTON_COPY}" press="runNavigationToCopyPO"/>
+				<m:OverflowToolbarButton text="Add" icon="sap-icon://add" press="runNavigationToNewPO"/>
+			</m:OverflowToolbar>
+		</m:footer>
+	</m:Page>
+</mvc:View>

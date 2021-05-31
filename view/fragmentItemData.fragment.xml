@@ -1,0 +1,59 @@
+<c:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.core"
+	xmlns="sap.m"
+>
+	
+	<Panel id="panelItemData">
+
+            <Toolbar>
+                <Text text="{i18n>TABLE_ITEM_DATA}" tooltip="Item Data" class="sapMH4FontSize"/>
+            </Toolbar>
+        
+        <IconTabBar
+            class="sapUiResponsiveContentPadding"
+            id="tabBar_ItemData"
+            expanded="true"
+            select="toggleButtonPressed"
+            applyContentPadding="false"
+            selectedKey="general">
+        	
+        	<items>
+        		
+				<IconTabFilter
+					id="toggleItemData_General"
+					text="{i18n>TABLE_GEN_DATA}"
+					tooltip="General Data"
+					key="general">
+					<c:Fragment id="fragmentItemData_GeneralData" fragmentName="PurchaseOrdersPurchaseOrders.view.fragmentItemData_GeneralData" type="XML" />
+				</IconTabFilter>
+				
+				<IconTabFilter
+					id="toggleItemData_DeliveryAddress"
+					text="{i18n>TABLE_DAddr}"
+					tooltip="Delivery Address"
+					key="address">
+					<c:Fragment id="fragmentItemData_DeliveryAddress" fragmentName="PurchaseOrdersPurchaseOrders.view.fragmentItemData_DeliveryAddress" type="XML" />
+				</IconTabFilter>
+				<IconTabFilter
+					id="toggleItemData_ItemDetails"
+					text="{i18n>TABLE_ITEM_TEXT}"
+					tooltip="Item text"
+					key="itemtext">
+					<c:Fragment id="fragmentItemData_ItemText" fragmentName="PurchaseOrdersPurchaseOrders.view.fragmentItemData_ItemText" type="XML" />
+				</IconTabFilter>
+		<IconTabFilter
+					id="toggleItemData_Attachment"
+					text="{i18n>TABLE_Attachment}"
+					tooltip="Attachment"
+					key="attachment">
+					<c:Fragment id="fragmentItemData_Attachment" fragmentName="PurchaseOrdersPurchaseOrders.view.fragmentItemData_Attachment" type="XML" />
+				</IconTabFilter>
+				
+            </items>
+              
+        </IconTabBar>
+        
+    </Panel>
+		
+</c:FragmentDefinition>

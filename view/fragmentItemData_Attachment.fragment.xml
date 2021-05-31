@@ -1,0 +1,73 @@
+<c:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified"
+	class="viewPadding">
+	
+<u:FileUploader 
+           id="fileUploader" 
+           name="myFileUpload" 
+           tooltip="{i18n>UploadUrFile}" 
+           uploadComplete="handleUploadComplete"                                                                                    
+          change="handleValueChange" 
+          width="400px"
+          sendXHR="true"
+          uploadUrl="/sap/opu/odata/sap/ZODATA_22256_PO_CR_CH_SERVICE_SRV/ZtgetattachmentSet/"
+          typeMissmatch="handleTypeMissmatch" 
+          style="Emphasized" 
+          fileType="txt,jpg,doc,xls,ppt,docx,xlsx,pptx,pdf,gif,png"                                                                                    
+          placeholder="{i18n>TABLE_CHOOSE_FILE}" >
+          	<!--<u:parameters>
+					<u:FileUploaderParameter
+						name="Filename"
+						value="filename"/>
+					<u:FileUploaderParameter
+						name="PoNumber"
+						value="sPoNumber"/>
+				</u:parameters>
+				<u:headerParameters>
+					<u:FileUploaderParameter
+						name="slug"
+						value="oSlugData"/>
+					<u:FileUploaderParameter
+						name="x-csrf-token"
+						value="token"/>
+				</u:headerParameters>-->
+				</u:FileUploader>
+  
+                                                                                           
+ <Label width= "10px" text=""/>                                                                                  
+<Button  text="{i18n>TABLE_ATTACHMENT_UPLOAD_AND_SAVE}" width="20%" press="handleUploadPress"/> 
+
+
+			
+
+		<List
+		id="list"
+		mode="Delete"
+		delete="handleDelete"
+		enableBusyIndicator="true"
+			headerText="{i18n>TABLE_PRODUCTS}"
+		growing="true"
+		items="{
+			path: '/attachmentData'
+		}" >
+			
+		<ObjectListItem
+	
+			title="{FileName}"
+		  type="Active"
+		 press="onListItemPress"/>
+			
+		
+	</List>                                                   
+
+			
+
+	<!--		</content>-->
+	<!--</Dialog>-->
+	
+	
+</c:FragmentDefinition>

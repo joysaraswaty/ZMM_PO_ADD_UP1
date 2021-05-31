@@ -1,0 +1,90 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:c="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:smartForm="sap.ui.comp.smartform" xmlns:smartField="sap.ui.comp.smartfield" xmlns="sap.m" height="100%" class="sapUiSizeCompact"
+	controllerName="PurchaseOrdersPurchaseOrders.controller.viewHandlePO" 	xmlns:u="sap.ui.unified">
+	<c:Fragment fragmentName="PurchaseOrdersPurchaseOrders.view.fragmentDistributionManagement" type="XML"/>
+	<Page title="{i18n>LABEL_DETAIL_VIEW_TITLE}" showHeader="true" enableScrolling="true" class="sapUiContentPadding" showNavButton="false">
+		<content>
+
+			<VBox>
+				<f:SimpleForm id="formPOHeader" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="5" labelSpanM="4" labelSpanS="12"
+					adjustLabelSpan="false" emptySpanXL="0" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+					singleContainerFullSize="false">
+					<f:content>
+						<Toolbar>
+							<Title text="{i18n>LABEL_GENERAL_DATA}" level="H5" titleStyle="H5"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+						<Label text="{i18n>LABEL_PO_NUM}" design="Bold"/>
+						<Input id="inputPONumber" editable="false" value="{/PoNumber}" class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_PO_DOC_TYPE}" required="true"/>
+						<Input id="inputDocumentType" editable="true"
+							value="{ parts : [{ path : '/DocType' } , {path : '/DocTypetxt'}], formatter : '.formatIsEmptyHeaderValue'}" showSuggestion="true"
+							showValueHelp="true" valueHelpRequest="fn_val_hlp_req__DocumentType" change="fn_focusout__DocumentType" class="sapUiTinyMarginBottom"
+							enabled="{ path : '/' , formatter : '.formatIsDocumentTypeFieldEnabled' }"/>
+						<Label text="{i18n>LABEL_COMP_CODE}" required="true"/>
+						<Input id="inputCompanyCode" editable="true"
+							value="{ parts : [{ path : '/CompCode' } , {path : '/CompCodetxt'}], formatter : '.formatIsEmptyHeaderValue'}" showSuggestion="true"
+							showValueHelp="true" valueHelpRequest="fn_val_hlp_req__CompanyCode" change="fn_focusout_CompanyCode" class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_PUR_ORG}" required="true"/>
+						<Input id="inputPurchasingOrganization" editable="true"
+							value="{ parts : [{ path : '/PurchOrg' } , {path : '/PurchOrgtxt'}], formatter : '.formatIsEmptyHeaderValue'}" showSuggestion="true"
+							showValueHelp="true" valueHelpRequest="fn_val_hlp_req__PurchasingOrganization" change="fn_focusout_PurchasingOrganization"
+							class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_SUPPLIER}" required="true"/>
+						<Input id="inputSupplier" editable="true"
+							value="{ parts : [{ path : '/Vendor' } , {path : '/Vendorname'}], formatter : '.formatIsEmptyHeaderValue'}" showSuggestion="true"
+							showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Supplier" change="fn_focusout_Supplier" class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_PUR_GRP}" required="true"/>
+						<Input id="inputPurchasingGroup" editable="true"
+							value="{ parts : [{ path : '/PurGroup' } , {path : '/PurGrouptxt'}], formatter : '.formatIsEmptyHeaderValue'}" showSuggestion="true"
+							showValueHelp="true" valueHelpRequest="fn_val_hlp_req__PurchasingGroup" change="fn_focusout_PurchasingGroup" class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_PLANT}" tooltip="Plant" visible="true"/>
+						<Input id="plantHeader"
+							value="{parts : [{path : '/results/0/Plant'} , {path : '/results/0/Planttxt'} ], formatter : '.formatIsEmptyHeaderValue' }"
+							showSuggestion="true" showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Header_Plant"/>
+						<Label text="Label" width="100%" id="__label59"/>
+						<Label id="idInformationLabel" text="{i18n>LABEL_INFORMATION}" visible="false"/>
+						<Button id="idInformationButton" text="" icon="sap-icon://hint" press="onInformationPress" width="10%" visible="false" enabled="false"/>
+						<Toolbar>
+							<Title text="" level="H5" titleStyle="H5"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+						<Label text="{i18n>LABEL_TOTAL_PO_VALUE}"/>
+						<Input id="inputTotalPOValue" editable="false" value="{/TotalValue}" class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_PAYMENT_TERM}" required="true"/>
+						<Input id="inputPaymentTerms" editable="false"
+							value="{ parts : [{ path : '/Pmnttrms' } , {path : '/Pmnttrmstxt'}], formatter : '.formatIsEmptyHeaderValue'}" showSuggestion="true"
+							showValueHelp="true" valueHelpRequest="fn_val_hlp_req__PaymentTerms" class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_CUR}" required="true"/>
+						<Input id="inputCurrency" editable="true" value="{/Currency}" showSuggestion="true" showValueHelp="true"
+							valueHelpRequest="fn_val_hlp_req__Currency" change="fn_focusout_Currency" class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_REQUISITION}" required="true"/>
+						<Input id="inputRequisitioner" editable="true"
+							value="{ parts : [{ path : '/PreqName' } , {path : '/PreqNametxt'}], formatter : '.formatIsEmptyHeaderValue'}" showSuggestion="true"
+							showValueHelp="true" valueHelpRequest="fn_val_hlp_req__Requisitioner" change="fn_focusout_Requisitioner" class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_PO_CREATOR_EMAIL}" required="true"/>
+						<Input id="inputEmail" editable="true" value="{/EMail}" required="true" liveChange="fn_val_hlp_req__EMail" class="sapUiTinyMarginBottom"
+							type="Email"/>
+						<Label text="{i18n>LABEL_APPROVER}" required="false"/>
+						<Input id="inputApprover" editable="false" value="{/Input2}" required="false" class="sapUiTinyMarginBottom"/>
+						<Label text="{i18n>LABEL_HEADER_TEXT}" required="false"/>
+						<Input id="HeaderText" editable="true" value="{/Input4}" required="false" class="sapUiTinyMarginBottom" maxLength="30"
+							liveChange="fn_focusout_headerText"/>
+						<Label id="labelRevRej" text="{i18n>LABEL_REV_REJ}" required="false" visible="false"/>
+						<CheckBox id="boxRrevRej" name="RevRejBox" visible="false" selected="false" class="sapUiTinyMarginBottom"/>
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+		</content>
+		<footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button text="{i18n>BUTTON_SUBMIT}" id="buttonSubmit" press="buttonSubmitPressed"/>
+				<Button text="{i18n>BUTTON_UPDATE}" id="buttonUpdate" press="buttonUpdatePressed"/>
+				<Button text="{i18n>BUTTON_CANCEL}" press="navBackToPOsList"/>
+			</OverflowToolbar>
+		</footer>
+		<c:Fragment fragmentName="PurchaseOrdersPurchaseOrders.view.fragmentItemData" type="XML"/>
+		<c:Fragment fragmentName="PurchaseOrdersPurchaseOrders.view.fragmentItemHistory" type="XML"/>
+	</Page>
+</mvc:View>

@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	
+	<Dialog id="informationDialog" title="{i18n>itemTextInformationDialog}">
+	
+		<List items="{ path: 'information>/ITEMS' }"
+		class="sapUiResponsiveMargin"
+width="auto"
+              
+		>
+			<StandardListItem title="{information>ITEMTEXT}" class="listItemInformation" selected="false" />
+		</List>
+
+		<beginButton>
+			<Button text="{i18n>dialogCloseButtonText}" press="onInformationCloseDialog"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

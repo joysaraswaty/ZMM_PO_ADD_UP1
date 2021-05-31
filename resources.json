@@ -1,0 +1,195 @@
+{
+    "resources": [
+        {
+            "name": "view/viewHandlePO.view.xml"
+        },
+        {
+            "name": "view/fragmentItemHistory.fragment.xml"
+        },
+        {
+            "name": "view/fragmentItemData_ItemText.fragment.xml"
+        },
+        {
+            "name": "view/fragmentInformation.fragment.xml"
+        },
+        {
+            "name": "view/fragmentItemData.fragment.xml"
+        },
+        {
+            "name": "view/fragmentItemData_GeneralData.fragment.xml"
+        },
+        {
+            "name": "view/viewApplicationMain.view.xml"
+        },
+        {
+            "name": "view/fragmentItemData_Attachment.fragment.xml"
+        },
+        {
+            "name": "view/fragmentDistributionManagement.fragment.xml"
+        },
+        {
+            "name": "view/viewManagePOs.view.xml"
+        },
+        {
+            "name": "view/fragmentItemData_DeliveryAddress.fragment.xml"
+        },
+        {
+            "name": "model/temporary.json"
+        },
+        {
+            "name": "model/PoSubItem.json"
+        },
+        {
+            "name": "model/Po_POST_ITEM_Object.json"
+        },
+        {
+            "name": "model/PoItem.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/PoPOST.json"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_en.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_de.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "package.json"
+        },
+        {
+            "name": "Component-changes.json"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/ZODATA_22256_PO_F4_FUNCTIONS_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZODATA_22256_PO_CR_CH_SERVICE_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZODATA_22256_PO_POSTING_SRV/metadata.xml"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "AppInstance.js"
+        },
+        {
+            "name": "Grantfile.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "controller/temporary.js"
+        },
+        {
+            "name": "controller/js/GetItemsTableElementByIndex.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInput.js"
+        },
+        {
+            "name": "controller/js/customControls/customTableActionButton.js"
+        },
+        {
+            "name": "controller/js/customControls/calculableInput.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInputsbyField/assistedInput_Account.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInputsbyField/assistedInput_ItemCategory.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInputsbyField/assistedInput_MultipleAccounts.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInputsbyField/assistedInput_AccountAssignment.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInputsbyField/assistedInput_Plant.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInputsbyField/assistedInput_MaterialGroup.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInputsbyField/assistedInput_Order.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInputsbyField/assistedInput_UnitOfMeasure.js"
+        },
+        {
+            "name": "controller/js/customControls/customAssistedInputsbyField/assistedInput_CostCenter.js"
+        },
+        {
+            "name": "controller/js/SubItems.js"
+        },
+        {
+            "name": "controller/js/FETCH_PoItems.js"
+        },
+        {
+            "name": "controller/js/ShowMessage.js"
+        },
+        {
+            "name": "controller/js/FETCH_PoAddress.js"
+        },
+        {
+            "name": "controller/js/SumUPTotalPOValue.js"
+        },
+        {
+            "name": "controller/js/JSON_Objects.js"
+        },
+        {
+            "name": "controller/js/FETCH_PoHeader.js"
+        },
+        {
+            "name": "controller/js/ShowToast.js"
+        },
+        {
+            "name": "controller/viewHandlePO.controller.js"
+        },
+        {
+            "name": "controller/viewManagePOs.controller.js"
+        },
+        {
+            "name": "controller/viewApplicationMain.controller.js"
+        }
+    ]
+}

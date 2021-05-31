@@ -1,0 +1,110 @@
+<c:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	xmlns="sap.ui.table">
+	
+
+			<Table
+				id="tablePOAddress"
+				selectionMode="None"
+				visibleRowCount="0"
+				rowHeight="10"
+				ariaLabelledBy="title">
+				
+		<columns>
+			
+			
+			<Column width="5em">
+					<m:Label text="{i18n>TABLE_DAddr_COLUMN_ITEMNO}" tooltip = "Item No"/>
+					<template>
+						<m:Input value = "{PoItem}" enabled = "false"/>
+					</template>
+			</Column>
+			
+			<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+					<m:Label text="{i18n>TABLE_DAddr_COLUMN_NAME}" tooltip = "Name"/>
+					<template>
+						<m:Input value = "{Name}" enabled ="{= !(${DeleteInd} === 'L')}" liveChange = "fn_liveChange_Address__Name"/>
+					</template>
+			</Column>
+			
+			<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+					<m:Label text="{i18n>TABLE_DAddr_COLUMN_STREET}" tooltip = "Street"/>
+					<template>
+						<m:Input value = "{Street}" enabled ="{= !(${DeleteInd} === 'L')}" liveChange = "fn_liveChange_Address__Street" />
+					</template>
+			</Column>
+			
+			<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" visible="false">
+					<m:Label text="Street No" tooltip = "Street No"/>
+					<template>
+						<m:Input value = "{StreetNo}" enabled ="{= !(${DeleteInd} === 'L')}" liveChange = "fn_liveChange_Address__StreetNo"/>
+					</template>
+			</Column>
+			
+			<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+					<m:Label text="{i18n>TABLE_DAddr_COLUMN_POSTAL_CODE}" tooltip = "Postal Code"/>
+					<template>
+						<m:Input value = "{PostlCod1}" enabled ="{= !(${DeleteInd} === 'L')}" liveChange = "fn_liveChange_Address__PostalCode"/>
+					</template>
+			</Column>
+			
+			<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+					<m:Label text="{i18n>TABLE_DAddr_COLUMN_CITY}" tooltip = "City"/>
+					<template>
+						<m:Input value = "{City}" enabled ="{= !(${DeleteInd} === 'L')}" liveChange = "fn_liveChange_Address__City"/>
+					</template>
+			</Column>
+			
+			<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" visible="false" >
+					<m:Label text="Region" tooltip = "Region"/>
+					<template>
+						<m:Input value = "{Region}" enabled ="{= !(${DeleteInd} === 'L')}" liveChange = "fn_liveChange_Address__Region"/>
+					</template>
+			</Column>
+			
+			<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+					<m:Label text="{i18n>TABLE_DAddr_COLUMN_COUNTRY}" tooltip = "Country"/>
+					<template>
+						<m:Input value = "{Country}" enabled ="{= !(${DeleteInd} === 'L')}" liveChange = "fn_liveChange_Address__Country"/>
+					</template>
+			</Column>
+			<Column flexible="true" width = "5em">
+					<m:Label text="{i18n>TABLE_DAddr_COLUMN_COMPLETED}" tooltip = "Delivery Completed"/>
+					<template>
+						<m:CheckBox selected="{
+										      path : 'Delivcompleted',
+										      type : 'sap.ui.model.type.Boolean' ,
+										      formatter: '.formatBoolean'
+										      }"
+									enabled = "{
+											path : '/',
+											formatter : '.isFinalDeliveryEnabled'}"
+									select = "fn_val_hlp_req_Items_FinalInvoice"/>
+					</template>
+				</Column>
+			<Column width="3em">
+					<m:Label text="" />
+					<template>
+						<m:Button icon = 'sap-icon://copy' class = "sapUiSizeCompact" enabled ="{= !(${DeleteInd} === 'L')}" press = "buttonCopyAddressPressed"/>
+					</template>
+			</Column>
+			<Column width="3em">
+					<m:Label text="" />
+					<template>
+						<m:Button icon = 'sap-icon://redo' class = "sapUiSizeCompact" enabled ="{= !(${DeleteInd} === 'L')}" press = "buttonUndoAddressPressed"/>
+					</template>
+			</Column>
+			<Column width="3em">
+					<m:Label text="" />
+					<template>
+						<m:Button icon = 'sap-icon://history' class = "sapUiSizeCompact" enabled ="{= !(${DeleteInd} === 'L')}" press = "openItemHistoryDialog"/>
+					</template>
+			</Column>
+			
+			
+		</columns>
+	</Table>
+	
+</c:FragmentDefinition>

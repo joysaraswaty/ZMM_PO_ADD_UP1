@@ -1,0 +1,216 @@
+/*
+html, body {
+        height: 100%;
+    }
+    div#content {
+        height: 100%
+    }
+*/
+
+.scrollablePage {
+	overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+.sapMPageFixedBottomFooter {
+	position: fixed !important;
+    bottom: 0 !important;
+}
+
+.sapMText {
+	font-size: 0.79rem !important ;
+}
+
+/*
+.sapMPageEnableScrolling {
+	overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+*/
+.sapUiTableTd {
+	padding : 0 !important ;
+	margin : 0 !important ;
+}
+
+.sapMInputBase {
+    height : 1.45rem !important;
+    padding : 0rem 0rem 0rem 0rem !important;
+}
+
+.sapMInputBaseInner {
+    height: 1.45rem !important;
+    padding : 0rem 0rem 0rem 0rem !important;
+}
+
+.sapUiSizeCompact .sapMInputValHelp>.sapMInputValHelpInner {
+	height : 0rem !important;
+}
+
+.sapMComboBoxTextFieldArrow {
+	width: 1.75rem !important;
+    line-height: 1.5rem !important;
+}
+
+.sapUiFormEdit.sapUiFormM .sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12), .sapUiFormEdit.sapUiFormM .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12), .sapUiFormEdit.sapUiFormM .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12), .sapUiFormEdit.sapUiFormM .sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12) {
+padding-top : 0.25rem !important;
+}
+
+/* following 4 style added due to enhancement */
+.sapUiFormResGrid>div{
+	padding:0.00rem 0.75rem;box-sizing:border-box;
+}
+
+.sapMITBHead{
+	position:relative;
+	white-space:nowrap;
+	display:inline-block;
+	margin:0.00rem 0.75rem 0 0.25rem;
+	padding:0 1px;vertical-align:top;font-size:0.75rem;
+}
+
+.sapMPage.sapUiContentPadding>section {
+    padding: 1rem;
+    padding-top: 0rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+}
+
+.sapUiSizeCompact .sapMCbBg{
+	left:0.5rem;
+	top: 0.2rem;
+	height:0.75rem;
+	width:0.75rem;
+	line-height:0.75rem;
+	font-size:0.625rem;
+	border-radius:0;
+}
+
+/* following 1 style added to reduce sap.ui.table.Table toolbar height */
+.sapUiSizeCompact .sapMTB {
+    height: 1rem;
+}
+
+.sapUiTableTr>td {
+    border-right: 0px solid #cccccc !important;
+}
+
+.customFont {
+	font-family:"Tahoma,Verdana,Arial";
+    font-size:"0.85em";
+    padding: 1px 1px 1px 1px;
+}
+
+.sapUiTableColCell>.sapMLabel {
+    color: #000000;
+     font-size:"8px"
+}
+
+.sapUiTableRowAction {
+	border-left : 0px solid transparent ;
+}
+
+/* Ecranul 2 : inputul */
+.sapMInputBaseInner {
+	height : 1.5rem;
+	padding : 0.1rem 0.3rem 0.1rem 0.3rem;
+	font-size : 0.75rem;
+}
+
+/* Ecran 2 : containerul de input */
+.sapMInputBaseWidthPadding {
+    padding: 0 0 0 0 ;
+}
+.sapMInputBase {
+	height : 1.75rem ;
+}
+
+/* Ecranul 2 : celula 'container' de la header */
+.sapUiTableColCell{
+}
+
+/* Labelul de table header in sine de la prima coloana de actions */
+.sapUiTableColCell>.sapMLabel {
+	font-size : 0.8rem ;
+}
+/* ... si de la celelalte coloane */
+.sapUiTableColCell .sapUiLbl {
+	font-size : 0.8rem ;
+	border-right : 0px solid #ffffff ;
+}
+
+.sapUiTableCol {
+	border-right : 0px solid transparent;
+}
+
+.sapUiTableTr>td {
+	/*border-bottom : 0px solid transparent ;*/
+}
+
+.sapUiTableCell {
+	padding : 0.3rem ;
+}
+
+.sapMInputValHelpInner {
+	line-height : 0rem;
+	width : 0rem;
+	height:0rem;
+}
+
+.sapUiSizeCompact .sapMInputValHelp>.sapMInputValHelpInner {
+	line-height : 1rem;
+	width : 2.5rem;
+}
+
+.sapMInputValHelp {
+	width : 1rem;
+}
+
+.sapMInputVH>.sapMInputBaseInner {
+	padding-right : 0rem;
+}
+
+.sapMITB.sapUiResponsiveContentPadding>.sapMITBContainerContent>.sapMITBContent {
+    padding: 1rem 0.25rem;
+    box-sizing: border-box;
+}
+
+.tableTextAreaElement {
+	height: 6rem !important;
+}
+
+.sapMInputBase.sapMTextArea>.sapMTextAreaInner{
+		height: 6rem !important;
+}
+
+.listItemInformation {
+	
+    border-bottom: 0px;
+}
+
+.sapUiSizeCompact .sapMBtn {
+    height: 2.000rem;
+    padding: 0.1875rem 0;
+    left: 4px;
+    bottom: 3.5px;
+}
+    
+/*
+/* Ecranul 2 : containerul care tine labelurile din campurile de header */
+/*
+.sapUiFormEdit.sapUiFormM .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12) {
+	height : 1rem ;
+	padding : 0rem 0rem 0rem 0rem ;
+	vertical-align : middle;
+}
+*/
+/* Ecranul 2 :labelurile campurilor de header */
+/*
+.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel {
+	height : 1rem ;
+	padding : 0rem 0rem 0rem 0rem ;
+	font-size : 0.7rem;
+	
+}
+*/

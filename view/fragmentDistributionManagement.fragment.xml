@@ -1,0 +1,90 @@
+<c:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	xmlns="sap.ui.table">
+ 
+	<m:Dialog id = "dialogSubItems" title="Distribution Management for PO Item" >
+		
+		<m:content>
+				<Table
+					id="tablePOSubItems"
+					selectionMode="None"
+					visibleRowCount="0"
+					ariaLabelledBy="title">
+						<columns>
+							
+							<Column width = "3em" >
+								<m:Label text="" />
+								<template>
+									<m:Button icon = "sap-icon://sys-cancel-2" press = "button_pressed_SubItems_Delete"/>
+								</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="Quantity" tooltip = "Quantity"/>
+									<template>
+										<m:Input value="{ path: 'QUANTITY', type : 'sap.ui.model.type.Integer' }" liveChange = "fn_SubItems_Quantity_Change"
+										enabled = "{
+											path : '/',
+											formatter : '.fn_IsSubItemsColumnEnabled_Quantity'}"
+										/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="Percentage" tooltip = "Percentage"/>
+									<template>
+										<m:Input value = "{DISTR_PERC}" type = "Number" liveChange = "fn_SubItems_Percentage_Change"
+										enabled = "{
+											path : '/',
+											formatter : '.fn_IsSubItemsColumnEnabled_Percentage'}"
+										/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="G/L Account" tooltip = "G/L Account"/>
+									<template>
+										<m:Input value = "{GL_ACCOUNT}" showSuggestion ="true" showValueHelp = "true" valueHelpRequest = "fn_val_hlp_req__SubItems_Account"
+										change = "fn_focusout_Distribution__Account"/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="Cost Center" tooltip = "Cost Center"/>
+									<template>
+										<m:Input value = "{COSTCENTER}" showSuggestion ="true" showValueHelp = "true" valueHelpRequest = "fn_val_hlp_req__SubItems_CostCenter"
+											enabled = "{
+												path : '/',
+												formatter : '.fn_IsSubItemsColumnEnabled_CostCenter'}"
+											change = "fn_focusout_Distribution__CostCenter"/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="Order" tooltip = "Order"/>
+									<template>
+										<m:Input value = "{ORDERID}" showSuggestion ="true" showValueHelp = "true" valueHelpRequest = "fn_val_hlp_req__SubItems_Order"
+											enabled = "{
+													path : '/',
+													formatter : '.fn_IsSubItemsColumnEnabled_Order'}"
+											/>
+									</template>
+							</Column>
+							
+						</columns>
+					</Table>
+					
+					<m:Button icon="sap-icon://sys-add" press="buttonNewSubItemPressed"/>
+
+		</m:content>
+		<m:beginButton>
+		 	<m:Button icon="sap-icon://accept" press="closeDistributionManagementDialog_Save" />
+		</m:beginButton>
+		<m:endButton>
+		 	<m:Button icon="sap-icon://decline" press="closeDistributionManagementDialog_Cancel" />
+		</m:endButton>
+		
+	</m:Dialog>
+</c:FragmentDefinition>

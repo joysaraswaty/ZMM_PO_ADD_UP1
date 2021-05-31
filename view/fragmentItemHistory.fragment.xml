@@ -1,0 +1,94 @@
+<c:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	xmlns="sap.ui.table">
+ 
+	<m:Dialog id = "dialogItemHistory" title="{i18n>TABLE_ITHIS}" >
+		
+		<m:content>
+				<Table
+					id="tableItemHistory"
+					rows="{/results}"
+					selectionMode="None"
+					visibleRowCount="0"
+					ariaLabelledBy="title">
+						<columns>
+			
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="{i18n>TABLE_ITHIS_COLUMN_DOC_TYPE}" tooltip = "Document Type"/>
+									<template>
+										<m:Input value = "{Ddtext}" enabled = "false"/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="{i18n>TABLE_ITHIS_COLUMN_DOC_NO}" tooltip = "Document Number"/>
+									<template>
+										<m:Input value = "{Belnr}" enabled = "false"/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="{i18n>TABLE_ITHIS_COLUMN_MOVE_TYPE}" tooltip = "Movement Type"/>
+									<template>
+										<m:Input value = "{Bwart}" enabled = "false"/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="{i18n>TABLE_ITHIS_COLUMN_DOC_DATE}" tooltip = "Document Date"/>
+									<template>
+											<m:DatePicker valueFormat="MM.dd.yyyy" value = "{
+												path: 'Budat',
+												formatter : '.formatDate'
+											}" enabled ="false" />
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="{i18n>TABLE_ITHIS_COLUMN_QUANTITY}" tooltip = "Quantity"/>
+									<template>
+										<m:Input value = "{Menge}" enabled = "false"/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="{i18n>TABLE_ITHIS_COLUMN_VALUE}" tooltip = "Value"/>
+									<template>
+										<m:Input value = "{Dmbtr}" enabled = "false"/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="{i18n>TABLE_ITHIS_COLUMN_CURRENCY}" tooltip = "Currency"/>
+									<template>
+										<m:Input value = "{Waers}" enabled = "false"/>
+									</template>
+							</Column>
+							
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="{i18n>TABLE_ITHIS_COLUMN_PAYMENT}" tooltip = "Payment"/>
+									<template>
+										<m:Input value = "{Input1}" enabled = "false"/>
+									</template>
+							</Column>
+														
+							<Column flexible="true" resizable="true" autoResizable = "true" width = "auto" >
+									<m:Label text="{i18n>TABLE_ITHIS_COLUMN_REVERSAL}" tooltip = "Reversal"/>
+									<template>
+										<m:Input value = "{Input4}" enabled = "false"/>
+									</template>
+							</Column>
+							
+						</columns>
+					</Table>
+
+		</m:content>
+
+		<m:endButton>
+		 	<m:Button text = "{i18n>BUTTON_CLOSE}  " press="closeItemHistoryDialog" />
+		</m:endButton>
+		
+	</m:Dialog>
+</c:FragmentDefinition>
